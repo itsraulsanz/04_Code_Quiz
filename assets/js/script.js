@@ -1,16 +1,19 @@
-/*```
-GIVEN I am taking a code quiz
-WHEN I click the start button
-THEN a timer starts and I am presented with a question
-WHEN I answer a question
-THEN I am presented with another question
-WHEN I answer a question incorrectly
-THEN time is subtracted from the clock
-WHEN all questions are answered or the timer reaches 0
-THEN the game is over
-WHEN the game is over
-THEN I can save my initials and my score
-```*/
+/* PSEUDO-CODE
+    - START BUTTON - When we press it:
+        - The time counter starts
+        - The question and the 4 options appears
+            - We press the correct answer
+                - Next question
+            - We press the incorrect answer
+                - Time is subtracted from the time counter
+        - All questions are answered or the timer reaches 0
+            - The game is over
+                - I can save my initials and my score
+                - I can press "go back"
+                    - I go back to the start page
+                - I clear the highscores
+                    - All the scores saved are deleted
+*/
 
 
 var startButton = document.querySelector(".startQuiz");
@@ -21,10 +24,9 @@ var lose = document.querySelector(".lose");
 
 
 
-// Timer
 startButton.addEventListener("click", startTimer);
 
-
+// Timer
 var timerCount = 75;
 var timeIntervalUp = setInterval(function() { startTimer() }, 1000);
 
@@ -41,5 +43,5 @@ function startTimer() {
 }
 
 function endTimer() {
-    document.getElementById("countDown").innerHTML = "Game Over";
+    document.getElementById("countDown").innerHTML = "The game is over";
 }
