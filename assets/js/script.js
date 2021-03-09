@@ -13,10 +13,33 @@ THEN I can save my initials and my score
 ```*/
 
 
-var startButton = document.querySelector(".start-button");
+var startButton = document.querySelector(".startQuiz");
 var wordBlank = document.querySelector(".wordblank");
 var timerCount = document.querySelector(".timer-text");
 var win = document.querySelector(".win");
 var lose = document.querySelector(".lose");
 
-// Game starts
+
+
+// Timer
+startButton.addEventListener("click", startTimer);
+
+
+var timerCount = 75;
+var timeIntervalUp = setInterval(function() { startTimer() }, 1000);
+
+
+function startTimer() {
+    document.getElementById("countDown").innerHTML = timerCount;
+    timerCount--;
+
+    if (timerCount == 0) {
+        clearInterval(timeIntervalUp);
+        endTimer();
+        reload();
+    }
+}
+
+function endTimer() {
+    document.getElementById("countDown").innerHTML = "Game Over";
+}
