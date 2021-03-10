@@ -13,11 +13,10 @@ body {
 }
 
 h1 {
-    font-size: 2em;
-    color: black;
-    padding: 40px;
+    font-size: 4vw;
+    text-transform: uppercase;
+    padding: 0 0.5em 0 0.5em;
     text-align: center;
-    border-bottom: solid 2px black;
 }
 
 h2 {
@@ -26,14 +25,33 @@ h2 {
     text-align: center;
 }
 
-.app {
+header {
+    padding: 15px 6% 15px 6%;
+    border-bottom: solid 2px black;
+}
+
+#countDown {
+    font-weight: bold;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#gameStart {
     flex-direction: column;
     justify-content: flex-start;
     display: flex;
     align-items: center;
 }
 
-.start-button {
+#app {
+    flex-direction: column;
+    justify-content: flex-start;
+    display: flex;
+    align-items: center;
+}
+
+#start-button {
     background: rgb(12, 15, 160);
     border-radius: 8px;
     color: white;
