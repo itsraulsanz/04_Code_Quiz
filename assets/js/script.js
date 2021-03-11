@@ -158,15 +158,27 @@ function endQuiz() {
     scoreSection = document.createElement("section");
     var scoreTitle = document.createElement("h2");
     var scoreText = document.createElement("p");
+
+    var formInsertScore = document.createElement("form");
+    var labelInsertScore = document.createElement("label");
+    var inputInsertScore = document.createElement("input");
+
     gameEnd.innerHTML = "";
+
 
     scoreTitle.innerHTML = "Well done!";
     scoreText.innerHTML = ["Your final score is " + score + "."];
+
+    labelInsertScore.innerHTML = ["Enter your initials: "];
+
 
     gameEnd.appendChild(scoreSection);
     scoreSection.appendChild(scoreTitle);
     scoreSection.appendChild(scoreText);
 
+    scoreSection.appendChild(formInsertScore);
+    formInsertScore.appendChild(labelInsertScore);
+    formInsertScore.appendChild(inputInsertScore);
 
     var playersScore = {
     score: score + timerCount,
