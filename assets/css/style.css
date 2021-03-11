@@ -51,6 +51,13 @@ header {
     align-items: center;
 }
 
+#gameEnd {
+    flex-direction: column;
+    justify-content: flex-start;
+    display: flex;
+    align-items: center;
+}
+
 #start-button {
     background: rgb(12, 15, 160);
     border-radius: 8px;

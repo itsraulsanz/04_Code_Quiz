@@ -14,6 +14,8 @@
                 - I clear the highscores
                     - All the scores saved are deleted
 */
+
+// QUESTIONS, ANSWERS & SOLUTIONS
 var questions = [
   {
     question: "Commonly used data types DO NOT include:",
@@ -59,28 +61,31 @@ var questions = [
     solution: 3,
   },
 ];
+
 var startButton = document.querySelector(".startQuiz");
 var timerCount = document.querySelector(".timer-text");
 var app = document.getElementById("gameStart");
 var app = document.getElementById("app");
-var currentQuestionIndex = 0;
 document.getElementById("app").style.visibility = "hidden";
+var gameEnd = document.getElementById("gameEnd");
+document.getElementById("gameEnd").style.visibility = "hidden";
+var currentQuestionIndex = 0;
 var score = 0; 
 var timerCount = 75;
 var timeIntervalUp;
+
 // Game starts
 startButton.addEventListener("click", function () {
   gameStart.innerHTML = "";
   document.getElementById("app").style.visibility = "visible";
-  // Timer
   timeIntervalUp = setInterval(startTimer, 1000);
   showQuestion();
 });
 
+// Timer
 function startTimer() {
   document.getElementById("countDown").innerHTML = timerCount;
   timerCount--;
-
   if (timerCount == 0) {
     clearInterval(timeIntervalUp);
     endTimer();
@@ -91,8 +96,7 @@ function endTimer() {
   document.getElementById("countDown").innerHTML = "The game is over";
 }
 
-// QUESTIONS & ANSWERS
-
+// Questions
 function showQuestion() {
   var step = questions[currentQuestionIndex];
   var questionSection = document.createElement("section");
@@ -124,12 +128,12 @@ function answerClick(i) {
   var isCorrectAnswer = i === questions[currentQuestionIndex].solution;
   console.log(isCorrectAnswer);
   if (isCorrectAnswer) {
-    alert("CORRECT");
-    score++;
+    //alert("CORRECT");
+    score += 10;
     //result.textContent = "Correct answer!";
     //console.log(result);
   } else {
-    alert("WRONG");
+    //alert("WRONG");
     // result.textContent = "Wrong answer.";
     timerCount -= 10;
     document.getElementById("countDown").innerHTML = timerCount;
@@ -145,9 +149,32 @@ function answerClick(i) {
 function endQuiz() {
     // Clear the screen and present back an input box with the players score
     //When they enter their initials they can click a button which will get the value from the box 
-var playersScore = {
-    score: score,
+    document.getElementById("app").style.display = "none";
+    document.getElementById("countDown").style.display = "none";
+    
+    document.getElementById("gameEnd").style.visibility = "visible";
+    
+
+    scoreSection = document.createElement("section");
+    var scoreTitle = document.createElement("h2");
+    var scoreText = document.createElement("p");
+    gameEnd.innerHTML = "";
+
+    scoreTitle.innerHTML = "Well done!";
+    scoreText.innerHTML = ["Your final score is " + score + "."];
+
+    gameEnd.appendChild(scoreSection);
+    scoreSection.appendChild(scoreTitle);
+    scoreSection.appendChild(scoreText);
+
+
+    var playersScore = {
+    score: score + timerCount,
     initials: "RS"
+
+        //result.textContent = "Correct answer!";
+
+
 }
 
     // LOCAL STORAGE
