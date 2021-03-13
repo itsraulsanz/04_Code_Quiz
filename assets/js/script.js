@@ -19,45 +19,35 @@
 var questions = [
   {
     question: "Commonly used data types DO NOT include:",
-    answers: ["A. Strings", "B. Booleans", "C. Alerts", "D. Numbers"],
+    answers: ["Strings", "Booleans", "Alerts", "Numbers"],
     solution: 2,
   },
   {
     question:
       "The condition in an if/else statement is enclosed within _______.",
-    answers: [
-      "A. Quotes",
-      "B. Curly brackets",
-      "C. Parenthesis",
-      "D. Square brackets",
-    ],
+    answers: ["Quotes", "Curly brackets", "Parenthesis", "Square brackets"],
     solution: 2,
   },
   {
     question: "Arrays in JavaScript can be used to store _______.",
     answers: [
-      "A. Numbers and strings",
-      "B. Other arrays",
-      "C. Booleans",
-      "D. All of the above",
+      "Numbers and strings",
+      "Other arrays",
+      "Booleans",
+      "All of the above",
     ],
     solution: 3,
   },
   {
     question:
       "String values must be enclosed within _______ when being assigned to variables.",
-    answers: ["A. Commas", "B. Curly brackets", "C. Quotes", "D. Parenthesis"],
+    answers: ["Commas", "Curly brackets", "Quotes", "Parenthesis"],
     solution: 3,
   },
   {
     question:
       "A very useful tool used during development and debugging for printing contect to the debugger is:",
-    answers: [
-      "A. JavaScript",
-      "B. Terminal / Bash",
-      "C. For loops",
-      "D. Console.log",
-    ],
+    answers: ["JavaScript", "Terminal / Bash", "For loops", "Console.log"],
     solution: 3,
   },
 ];
@@ -68,9 +58,9 @@ var app = document.getElementById("gameStart");
 var app = document.getElementById("app");
 document.getElementById("app").style.visibility = "hidden";
 var gameEnd = document.getElementById("gameEnd");
-document.getElementById("gameEnd").style.visibility = "hidden";
+document.getElementById("gameEnd").style.display = "none";
 var currentQuestionIndex = 0;
-var score = 0; 
+var score = 0;
 var timerCount = 75;
 var timeIntervalUp;
 
@@ -80,6 +70,8 @@ startButton.addEventListener("click", function () {
   document.getElementById("app").style.visibility = "visible";
   timeIntervalUp = setInterval(startTimer, 1000);
   showQuestion();
+  // endQuiz();
+  // renderGameHighscores();
 });
 
 // Timer
@@ -124,6 +116,7 @@ function showQuestion() {
 
   document.getElementById("app").appendChild(questionSection);
 }
+
 function answerClick(i) {
   var isCorrectAnswer = i === questions[currentQuestionIndex].solution;
   console.log(isCorrectAnswer);
@@ -132,11 +125,13 @@ function answerClick(i) {
     score += 10;
     //result.textContent = "Correct answer!";
     //console.log(result);
+    showResult(true);
   } else {
     //alert("WRONG");
     // result.textContent = "Wrong answer.";
     timerCount -= 10;
     document.getElementById("countDown").innerHTML = timerCount;
+    showResult(false);
   }
   currentQuestionIndex++;
   if (currentQuestionIndex === questions.length) {
@@ -146,55 +141,75 @@ function answerClick(i) {
   }
 }
 
-function endQuiz() {
-    // Clear the screen and present back an input box with the players score
-    //When they enter their initials they can click a button which will get the value from the box 
-    document.getElementById("app").style.display = "none";
-    document.getElementById("countDown").style.display = "none";
-    
-    document.getElementById("gameEnd").style.visibility = "visible";
-    
+function showResult(isCorrect) {
+  var resultWrapper = document.getElementById("result");
+  var questionResult = document.createElement("p");
+  resultWrapper.innerHTML = "";
 
-    scoreSection = document.createElement("section");
-    var scoreTitle = document.createElement("h2");
-    var scoreText = document.createElement("p");
+  resultWrapper.appendChild(questionResult);
 
-    var formInsertScore = document.createElement("form");
-    var labelInsertScore = document.createElement("label");
-    var inputInsertScore = document.createElement("input");
+  if (isCorrect) {
+    questionResult.textContent = "Correct answer!";
+  } else {
+    questionResult.textContent = "Wrong answer :(";
+  }
 
-    gameEnd.innerHTML = "";
-
-
-    scoreTitle.innerHTML = "Well done!";
-    scoreText.innerHTML = ["Your final score is " + score + "."];
-
-    labelInsertScore.innerHTML = ["Enter your initials: "];
-
-
-    gameEnd.appendChild(scoreSection);
-    scoreSection.appendChild(scoreTitle);
-    scoreSection.appendChild(scoreText);
-
-    scoreSection.appendChild(formInsertScore);
-    formInsertScore.appendChild(labelInsertScore);
-    formInsertScore.appendChild(inputInsertScore);
-
-    var playersScore = {
-    score: score + timerCount,
-    initials: "RS"
-
-        //result.textContent = "Correct answer!";
-
-
+  setTimeout(function () {
+    questionResult.remove();
+  }, 1000);
 }
 
-    // LOCAL STORAGE
+function endQuiz() {
+  document.getElementById("app").style.display = "none";
+  document.getElementById("countDown").style.display = "none";
+  document.getElementById("gameEnd").style.display = "block";
+  document.getElementById("finalScore").textContent = score;
 
-    // create a variable which is assigned whatever is returned from get ... from local storage OR ELSE and empty array
-    var highscores = JSON.parse(window.localStorage.getItem("highscores")) || []; 
+  var submitScoreButton = document.getElementById("submitScoreButton");
+  var initialsInput = document.getElementById("initials");
 
-    highscores.push(playersScore);
+  submitScoreButton.addEventListener("click", function (event) {
+    event.preventDefault();
 
-    window.localStorage.setItem("highscores", JSON.stringify(highscores))
+    saveUserScore(score, initialsInput.value);
+    document.getElementById("gameEnd").style.display = "none";
+    renderGameHighscores();
+  });
+}
+
+function saveUserScore(score, initials) {
+  console.log(score, initials);
+
+  var playersScore = {
+    initials: initials,
+    score: score,
+  };
+  var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
+
+  highscores.push(playersScore);
+
+  window.localStorage.setItem("highscores", JSON.stringify(highscores));
+}
+
+function renderGameHighscores() {
+  var gameHighscoresWrapper = document.getElementById("gameHighscores");
+  gameHighscoresWrapper.style.display = "block";
+
+  var highscoresResults = document.createElement("section");
+  var highscoresResultsTitle = document.createElement("h2");
+  var highscoresResultsScores = document.createElement("ul");
+
+  highscoresResults.appendChild(highscoresResultsTitle);
+  highscoresResults.appendChild(highscoresResultsScores);
+  highscoresResultsTitle.textContent = "High Scores:";
+
+  gameHighscoresWrapper.appendChild(highscoresResults);
+
+  var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
+
+  for (let i = 0; i < highscores.length; i++) {
+    var li = document.createElement("li");
+    li.textContent = highscores[i].initials + ": " + highscores[i].score;
+    highscoresResultsScores.appendChild(li);
+  }
 }

@@ -53,11 +53,33 @@ main {
     line-height: 1.7em;
 }
 
-#app {
+.app {
     flex-direction: column;
     justify-content: flex-start;
     display: flex;
     align-items: center;
+}
+
+.app section {
+    width: 50%;
+}
+
+.app li {
+    color: white;
+    background-color: green;
+    padding: 0.375rem 1.75rem;
+    border-radius: .25rem;
+    margin-bottom: 10px;
+    list-style: none;
+}
+
+.app li:hover {
+    color: white;
+    background-color: rgb(77, 170, 77);
+    padding: 0.375rem 1.75rem;
+    border-radius: .25rem;
+    margin-bottom: 10px;
+    list-style: none;
 }
 
 #gameEnd {
@@ -67,20 +89,30 @@ main {
     align-items: center;
 }
 
-#start-button {
-    background: rgb(12, 15, 160);
+#gameHighscores {
+    flex-direction: column;
+    justify-content: flex-start;
+    display: flex;
+    align-items: center;
+}
+
+.startQuiz {
+    background: rgb(119, 120, 146);
     border-radius: 8px;
     color: white;
-    cursor: pointer;
     font-size: 1.2em;
     line-height: 16px;
     max-width: 255px;
     padding: 15px 35px;
     text-align: center;
-    transition-duration: 0.15s;
-    transition-property: background-color;
-    transition-timing-function: linear;
     margin-top: 0.6em;
+    text-decoration: none;
+    transition: all 0.5s;
+}
+
+.startQuiz:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 3px solid white;
 }
 
 section {
@@ -90,6 +122,5 @@ section {
 ul {
     text-align: left;
     padding: 0;
-    list-style: none;
     line-height: 2em;
 }

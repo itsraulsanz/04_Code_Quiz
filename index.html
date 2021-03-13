@@ -19,8 +19,20 @@
         <p>Try to answe the following questions within the time limit. Keep in mind that incorrect answers will penalize your score time by ten seconds.</p>
         <button class="startQuiz">Start Quiz</button>
     </div>
-    <div id="app"></div>
-    <div id="gameEnd"></div>
+    <div id="app" class="app"></div>
+    <div id="result"></div>
+    <div id="gameEnd">      
+        <section>
+            <h2>Well done!</h2>
+            <p>Your final score is: <span id="finalScore"></span></p>
+            <form action="">
+                <label for="initials">Enter your initials:</label>
+                <input type="text" id="initials" />
+                <input type="submit" id="submitScoreButton" />
+            </form>
+        </section>  
+    </div>
+    <div id="gameHighscores"></div>
     </main>
 
     <script src="assets/js/script.js"></script>
