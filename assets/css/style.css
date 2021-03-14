@@ -36,6 +36,36 @@ main {
     align-items: center;
 }
 
+section {
+    text-align: left;
+}
+
+ul {
+    text-align: left;
+    padding: 0;
+    line-height: 2em;
+    font-size: 1.1em;
+}
+
+.startQuiz {
+    background: rgb(119, 120, 146);
+    border-radius: 8px;
+    color: white;
+    font-size: 1.2em;
+    line-height: 16px;
+    max-width: 255px;
+    padding: 15px 35px;
+    text-align: center;
+    margin-top: 0.6em;
+    text-decoration: none;
+    transition: all 0.5s;
+    border: none;
+}
+
+.startQuiz:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
 #countDown {
     font-weight: bold;
     text-transform: uppercase;
@@ -96,32 +126,31 @@ main {
     align-items: center;
 }
 
-.startQuiz {
+#gameHighscores ul {
+    list-style: none;
+    text-transform: uppercase;
+}
+
+#gameHighscores ul {
+    list-style: none;
+    text-transform: uppercase;
+}
+
+#gameHighscores button, #viewHighscores button {
     background: rgb(119, 120, 146);
     border-radius: 8px;
     color: white;
-    font-size: 1.2em;
+    font-size: 1em;
     line-height: 16px;
     max-width: 255px;
-    padding: 15px 35px;
+    padding: 13px 22px;
     text-align: center;
-    margin-top: 0.6em;
     text-decoration: none;
     transition: all 0.5s;
+    margin: 5px;
+    border: none;
 }
 
-.startQuiz:hover {
+#gameHighscores button:hover, #viewHighscores button:hover {
     background-color: rgba(0, 0, 0, 0.3);
-    border: 3px solid white;
-}
-
-section {
-    text-align: left;
-}
-
-ul {
-    text-align: left;
-    padding: 0;
-    line-height: 2em;
-    font-size: 1.1em;
 }

@@ -65,9 +65,22 @@ var score = 0;
 var timerCount = 75;
 var timeIntervalUp;
 
+// Go to the Highscores ranking
+var viewHighscores = document.getElementById("viewHighscores");
+var highscoresRankingButton = document.createElement("button");
+highscoresRankingButton.textContent = "View highscores";
+
+viewHighscores.appendChild(highscoresRankingButton);
+
+viewHighscores.addEventListener("click", function () {
+  gameStart.style.display = "none";
+  renderGameHighscores();
+});
+
 // Game starts
 startButton.addEventListener("click", function () {
   document.getElementById("gameStart").style.display = "none";
+  highscoresRankingButton.style.display = "none";
   document.getElementById("app").style.display = "block";
   timeIntervalUp = setInterval(startTimer, 1000);
   showQuestion();
@@ -179,7 +192,6 @@ function endQuiz() {
 }
 
 function saveUserScore(score, initials) {
-  console.log(score, initials);
 
   var playersScore = {
     initials: initials,
@@ -195,6 +207,7 @@ function saveUserScore(score, initials) {
 function renderGameHighscores() {
   var gameHighscoresWrapper = document.getElementById("gameHighscores");
   gameHighscoresWrapper.style.display = "block";
+  highscoresRankingButton.style.display = "none";
 
   var highscoresResults = document.createElement("section");
   var highscoresResultsTitle = document.createElement("h2");
@@ -234,6 +247,4 @@ function renderGameHighscores() {
     gameStart.style.display = "block";
     location.reload();
   });
-
-
 }
