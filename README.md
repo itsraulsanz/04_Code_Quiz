@@ -37,6 +37,6 @@ The following animation demonstrates the application functionality:
 
 ## Deployed Application
 
-Website URL: <a href="https://itsraulsanz.github.io/04_Code_Quiz/">https://itsraulsanz.github.io/04_Code_Quiz/</a>
+Website URL: <a href="https://itsraulsanz.github.io/raul-quiz/">https://itsraulsanz.github.io/raul-quiz/</a>
 
 <img src="./assets/images/screenshot.jpg" style="width: 700px;">
