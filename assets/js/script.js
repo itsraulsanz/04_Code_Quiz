@@ -1,20 +1,3 @@
-/* PSEUDO-CODE
-    - START BUTTON - When we press it:
-        - The time counter starts
-        - The question and the 4 options appears
-            - We press the correct answer
-                - Next question
-            - We press the incorrect answer
-                - Time is subtracted from the time counter
-        - All questions are answered or the timer reaches 0
-            - The game is over
-                - I can save my initials and my score
-                - I can press "go back"
-                    - I go back to the start page
-                - I clear the highscores
-                    - All the scores saved are deleted
-*/
-
 // QUESTIONS, ANSWERS & SOLUTIONS
 var questions = [
   {
@@ -52,19 +35,22 @@ var questions = [
   },
 ];
 
+// HTML and variable elements
 var startButton = document.querySelector(".startQuiz");
 var timerCount = document.querySelector(".timer-text");
-document.getElementById("countDown").style.display = "none";
 var app = document.getElementById("gameStart");
 var viewHighscoresSection = document.getElementById("viewHighscores");
 var app = document.getElementById("app");
-document.getElementById("app").style.display = "none";
 var gameEnd = document.getElementById("gameEnd");
-document.getElementById("gameEnd").style.display = "none";
 var currentQuestionIndex = 0;
 var score = 0;
 var timerCount = 75;
 var timeIntervalUp;
+
+// Hiding elements
+document.getElementById("countDown").style.display = "none";
+document.getElementById("app").style.display = "none";
+document.getElementById("gameEnd").style.display = "none";
 
 // Go to the Highscores ranking
 var viewHighscores = document.getElementById("viewHighscores");
@@ -86,8 +72,6 @@ startButton.addEventListener("click", function () {
   document.getElementById("countDown").style.display = "block";
   timeIntervalUp = setInterval(startTimer, 1000);
   showQuestion();
-  // endQuiz();
-  // renderGameHighscores();
 });
 
 // Timer
@@ -103,9 +87,12 @@ function startTimer() {
 function endTimer() {
   document.getElementById("countDown").innerHTML = "The game is over";
   document.getElementById("app").style.display = "none";
+  clearInterval(timeIntervalUp);
+  endTimer();
+  renderGameHighscores();
 }
 
-// Questions
+// Showing questions
 function showQuestion() {
   var step = questions[currentQuestionIndex];
   var questionSection = document.createElement("section");
@@ -134,11 +121,11 @@ function showQuestion() {
   document.getElementById("app").appendChild(questionSection);
 }
 
+// Answering questions
 function answerClick(i) {
   var isCorrectAnswer = i === questions[currentQuestionIndex].solution;
   console.log(isCorrectAnswer);
   if (isCorrectAnswer) {
-    //alert("CORRECT");
     score += 10;
     showResult(true);
   } else {
@@ -154,6 +141,7 @@ function answerClick(i) {
   }
 }
 
+// Questions results
 function showResult(isCorrect) {
   var resultWrapper = document.getElementById("result");
   var questionResult = document.createElement("p");
@@ -172,6 +160,7 @@ function showResult(isCorrect) {
   }, 1000);
 }
 
+// Saving the score
 function endQuiz() {
   document.getElementById("app").style.display = "none";
   document.getElementById("countDown").style.display = "none";
@@ -202,6 +191,7 @@ function saveUserScore(score, initials) {
   window.localStorage.setItem("highscores", JSON.stringify(highscores));
 }
 
+// Showing the highscores
 function renderGameHighscores() {
   var gameHighscoresWrapper = document.getElementById("gameHighscores");
   gameHighscoresWrapper.style.display = "block";

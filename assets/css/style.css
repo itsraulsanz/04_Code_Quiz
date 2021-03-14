@@ -5,22 +5,24 @@
 body {
   font-family: Arial;
   margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   justify-content: flex-start;
   background: rgb(223, 226, 228);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 h1 {
-    font-size: 4em;
-    text-transform: uppercase;
-    display: block;
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: auto;
-    align-self: center;
-    padding-left: 30px;
+  font-size: 4em;
+  text-transform: uppercase;
+  display: block;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: center;
+  padding-left: 30px;
 }
 
 h2 {
@@ -28,9 +30,16 @@ h2 {
   color: black;
 }
 
-p {
-    font-size: 1.2em;
-  }
+p, form {
+  font-size: 1.2em;
+}
+
+ul {
+  text-align: left;
+  padding: 0;
+  line-height: 2em;
+  font-size: 1.1em;
+}
 
 header {
   border-bottom: solid 2px black;
@@ -54,13 +63,6 @@ section {
   text-align: left;
 }
 
-ul {
-  text-align: left;
-  padding: 0;
-  line-height: 2em;
-  font-size: 1.1em;
-}
-
 .startQuiz {
   background: rgb(119, 120, 146);
   border-radius: 8px;
@@ -81,23 +83,23 @@ ul {
 }
 
 #countDown {
-    font-weight: bold;
-    font-size: 1.4em;
-    text-transform: uppercase;
-    flex-grow: 0;
-    flex-shrink: 1;
-    flex-basis: auto;
-    align-self: flex-end;
-    order: 0;
-    margin: 20px;
+  font-weight: bold;
+  font-size: 1.4em;
+  text-transform: uppercase;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: flex-end;
+  order: 0;
+  margin: 20px;
 }
 
 #viewHighscores {
-    font-weight: bold;
-    text-transform: uppercase;
-    align-self: flex-end;
-    margin-left: auto;
-    margin: 0px 10px 10px 0px;
+  font-weight: bold;
+  text-transform: uppercase;
+  align-self: flex-end;
+  margin-left: auto;
+  margin: 0px 10px 10px 0px;
 }
 
 #gameStart {
@@ -106,8 +108,12 @@ ul {
   display: flex;
   align-items: center;
   text-align: center;
-  width: 40%;
+  width: 75%;
   line-height: 1.7em;
+}
+
+#gameStart p {
+    width: 50vw;
 }
 
 .app {
@@ -140,15 +146,15 @@ ul {
 }
 
 #result {
-    width: 35vw;
+  width: 35vw;
 }
 
 #result p {
-    font-size: 1.2em;
-    color: black;
-    border-top: solid black 1px;
-    padding-top: 15px;
-    text-align: left;
+  font-size: 1.2em;
+  color: black;
+  border-top: solid black 1px;
+  padding-top: 15px;
+  text-align: left;
 }
 
 #gameEnd {
@@ -157,6 +163,11 @@ ul {
   display: flex;
   align-items: center;
 }
+
+#initials {
+    height: 6vh;
+    font-size: 1em;
+}    
 
 #gameHighscores {
   flex-direction: column;
@@ -175,6 +186,7 @@ ul {
   text-transform: uppercase;
 }
 
+#submitScoreButton,
 #gameHighscores button,
 #viewHighscores button {
   background: rgb(119, 120, 146);
@@ -194,4 +206,61 @@ ul {
 #gameHighscores button:hover,
 #viewHighscores button:hover {
   background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 768px) {
+    h1 {
+        order: 0;
+        margin: 25px 0px 6px 0px;
+        padding: 0;
+        font-size: 3em;
+        text-align: center;
+    }
+    h2 {
+        margin-bottom: 10px;
+        font-size: 1.3em;
+    }
+    header {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: normal;
+        align-items: normal;
+        align-content: normal;
+    }
+    #countDown {
+        align-self: auto;
+        text-align: center;
+        padding: 0;
+        margin: 10px 0px 10px 0px;
+    }
+    #gameStart p {
+        width: auto;
+    }
+    #viewHighscores {
+        align-self: auto;
+        text-align: center;
+        padding: 0;
+        margin: 10px 0px 10px 0px;
+    }
+    #gameEnd h2, #gameEnd section {
+        text-align: center;
+    }
+    #gameEnd form {
+        line-height: 1.4em;
+    }
+    .app section, #gameEnd section, #result {
+        width: 80vw;
+    }
+    #result p, form {
+        align-self: auto;
+        text-align: center;
+        padding: 10px 0px 10px 0px;
+    }
+    #label, #initials {
+        margin-bottom: 10px;
+    }
 }
