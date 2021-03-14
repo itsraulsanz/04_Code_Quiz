@@ -55,8 +55,9 @@ var questions = [
 var startButton = document.querySelector(".startQuiz");
 var timerCount = document.querySelector(".timer-text");
 var app = document.getElementById("gameStart");
+var viewHighscoresSection = document.getElementById("viewHighscores");
 var app = document.getElementById("app");
-document.getElementById("app").style.visibility = "hidden";
+document.getElementById("app").style.display = "none";
 var gameEnd = document.getElementById("gameEnd");
 document.getElementById("gameEnd").style.display = "none";
 var currentQuestionIndex = 0;
@@ -66,8 +67,8 @@ var timeIntervalUp;
 
 // Game starts
 startButton.addEventListener("click", function () {
-  gameStart.innerHTML = "";
-  document.getElementById("app").style.visibility = "visible";
+  document.getElementById("gameStart").style.display = "none";
+  document.getElementById("app").style.display = "block";
   timeIntervalUp = setInterval(startTimer, 1000);
   showQuestion();
   // endQuiz();
@@ -212,4 +213,27 @@ function renderGameHighscores() {
     li.textContent = highscores[i].initials + ": " + highscores[i].score;
     highscoresResultsScores.appendChild(li);
   }
+
+  // clear scores
+  var clearScoreButton = document.createElement("button");
+  clearScoreButton.textContent = "Clear Highscores";
+  highscoresResults.appendChild(clearScoreButton);
+
+  clearScoreButton.addEventListener("click", function () {
+    localStorage.clear();
+    highscoresResultsScores.innerHTML = "";
+  });
+
+  // go to the index page
+  var playAgainButton = document.createElement("button");
+  playAgainButton.textContent = "Play Again";
+  highscoresResults.appendChild(playAgainButton);
+
+  playAgainButton.addEventListener("click", function () {
+    gameHighscores.style.display = "none";
+    gameStart.style.display = "block";
+    location.reload();
+  });
+
+
 }

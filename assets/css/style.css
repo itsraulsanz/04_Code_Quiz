@@ -61,7 +61,7 @@ main {
 }
 
 .app section {
-    width: 50%;
+    width: 35vw;
 }
 
 .app li {
@@ -123,4 +123,5 @@ ul {
     text-align: left;
     padding: 0;
     line-height: 2em;
+    font-size: 1.1em;
 }
