@@ -1,156 +1,197 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: Arial;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    justify-content: flex-start;
-    background: rgb(223, 226, 228);
+  font-family: Arial;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: flex-start;
+  background: rgb(223, 226, 228);
 }
 
 h1 {
-    font-size: 4vw;
+    font-size: 4em;
     text-transform: uppercase;
-    padding: 0 0.5em 0 0.5em;
-    text-align: center;
+    display: block;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: center;
+    padding-left: 30px;
 }
 
 h2 {
-    font-size: 1.5em;
-    color: black;
+  font-size: 2em;
+  color: black;
 }
 
+p {
+    font-size: 1.2em;
+  }
+
 header {
-    padding: 15px 6% 15px 6%;
-    border-bottom: solid 2px black;
+  border-bottom: solid 2px black;
+  min-height: 12vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
 }
 
 main {
-    flex-direction: column;
-    justify-content: flex-start;
-    display: flex;
-    align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  display: flex;
+  align-items: center;
 }
 
 section {
-    text-align: left;
+  text-align: left;
 }
 
 ul {
-    text-align: left;
-    padding: 0;
-    line-height: 2em;
-    font-size: 1.1em;
+  text-align: left;
+  padding: 0;
+  line-height: 2em;
+  font-size: 1.1em;
 }
 
 .startQuiz {
-    background: rgb(119, 120, 146);
-    border-radius: 8px;
-    color: white;
-    font-size: 1.2em;
-    line-height: 16px;
-    max-width: 255px;
-    padding: 15px 35px;
-    text-align: center;
-    margin-top: 0.6em;
-    text-decoration: none;
-    transition: all 0.5s;
-    border: none;
+  background: rgb(119, 120, 146);
+  border-radius: 8px;
+  color: white;
+  font-size: 1.2em;
+  line-height: 16px;
+  max-width: 255px;
+  padding: 15px 35px;
+  text-align: center;
+  margin-top: 0.6em;
+  text-decoration: none;
+  transition: all 0.5s;
+  border: none;
 }
 
 .startQuiz:hover {
-    background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 #countDown {
     font-weight: bold;
+    font-size: 1.4em;
     text-transform: uppercase;
-    display: flex;
-    justify-content: flex-end;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: flex-end;
+    order: 0;
+    margin: 20px;
+}
+
+#viewHighscores {
+    font-weight: bold;
+    text-transform: uppercase;
+    align-self: flex-end;
+    margin-left: auto;
+    margin: 0px 10px 10px 0px;
 }
 
 #gameStart {
-    flex-direction: column;
-    justify-content: flex-start;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    width: 40%;
-    line-height: 1.7em;
+  flex-direction: column;
+  justify-content: flex-start;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 40%;
+  line-height: 1.7em;
 }
 
 .app {
-    flex-direction: column;
-    justify-content: flex-start;
-    display: flex;
-    align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  display: flex;
+  align-items: center;
 }
 
 .app section {
-    width: 35vw;
+  width: 35vw;
 }
 
 .app li {
-    color: white;
-    background-color: green;
-    padding: 0.375rem 1.75rem;
-    border-radius: .25rem;
-    margin-bottom: 10px;
-    list-style: none;
+  color: white;
+  background-color: green;
+  padding: 0.375rem 1.75rem;
+  border-radius: 0.25rem;
+  margin-bottom: 10px;
+  list-style: none;
 }
 
 .app li:hover {
-    color: white;
-    background-color: rgb(77, 170, 77);
-    padding: 0.375rem 1.75rem;
-    border-radius: .25rem;
-    margin-bottom: 10px;
-    list-style: none;
+  color: white;
+  background-color: rgb(77, 170, 77);
+  padding: 0.375rem 1.75rem;
+  border-radius: 0.25rem;
+  margin-bottom: 10px;
+  list-style: none;
+}
+
+#result {
+    width: 35vw;
+}
+
+#result p {
+    font-size: 1.2em;
+    color: black;
+    border-top: solid black 1px;
+    padding-top: 15px;
+    text-align: left;
 }
 
 #gameEnd {
-    flex-direction: column;
-    justify-content: flex-start;
-    display: flex;
-    align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  display: flex;
+  align-items: center;
 }
 
 #gameHighscores {
-    flex-direction: column;
-    justify-content: flex-start;
-    display: flex;
-    align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  display: flex;
+  align-items: center;
 }
 
 #gameHighscores ul {
-    list-style: none;
-    text-transform: uppercase;
+  list-style: none;
+  text-transform: uppercase;
 }
 
 #gameHighscores ul {
-    list-style: none;
-    text-transform: uppercase;
+  list-style: none;
+  text-transform: uppercase;
 }
 
-#gameHighscores button, #viewHighscores button {
-    background: rgb(119, 120, 146);
-    border-radius: 8px;
-    color: white;
-    font-size: 1em;
-    line-height: 16px;
-    max-width: 255px;
-    padding: 13px 22px;
-    text-align: center;
-    text-decoration: none;
-    transition: all 0.5s;
-    margin: 5px;
-    border: none;
+#gameHighscores button,
+#viewHighscores button {
+  background: rgb(119, 120, 146);
+  border-radius: 8px;
+  color: white;
+  font-size: 1em;
+  line-height: 16px;
+  max-width: 255px;
+  padding: 13px 22px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.5s;
+  margin: 5px;
+  border: none;
 }
 
-#gameHighscores button:hover, #viewHighscores button:hover {
-    background-color: rgba(0, 0, 0, 0.3);
+#gameHighscores button:hover,
+#viewHighscores button:hover {
+  background-color: rgba(0, 0, 0, 0.3);
 }

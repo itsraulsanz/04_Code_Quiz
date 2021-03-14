@@ -54,6 +54,7 @@ var questions = [
 
 var startButton = document.querySelector(".startQuiz");
 var timerCount = document.querySelector(".timer-text");
+document.getElementById("countDown").style.display = "none";
 var app = document.getElementById("gameStart");
 var viewHighscoresSection = document.getElementById("viewHighscores");
 var app = document.getElementById("app");
@@ -82,6 +83,7 @@ startButton.addEventListener("click", function () {
   document.getElementById("gameStart").style.display = "none";
   highscoresRankingButton.style.display = "none";
   document.getElementById("app").style.display = "block";
+  document.getElementById("countDown").style.display = "block";
   timeIntervalUp = setInterval(startTimer, 1000);
   showQuestion();
   // endQuiz();
@@ -100,6 +102,7 @@ function startTimer() {
 
 function endTimer() {
   document.getElementById("countDown").innerHTML = "The game is over";
+  document.getElementById("app").style.display = "none";
 }
 
 // Questions
@@ -137,12 +140,8 @@ function answerClick(i) {
   if (isCorrectAnswer) {
     //alert("CORRECT");
     score += 10;
-    //result.textContent = "Correct answer!";
-    //console.log(result);
     showResult(true);
   } else {
-    //alert("WRONG");
-    // result.textContent = "Wrong answer.";
     timerCount -= 10;
     document.getElementById("countDown").innerHTML = timerCount;
     showResult(false);
@@ -192,7 +191,6 @@ function endQuiz() {
 }
 
 function saveUserScore(score, initials) {
-
   var playersScore = {
     initials: initials,
     score: score,
